@@ -7,9 +7,9 @@
 #include "esphome/components/uart/uart.h"
 
 namespace esphome {
-namespace a01nyub {
+namespace tfminiplus {
 
-class A01nyubComponent : public sensor::Sensor, public Component, public uart::UARTDevice {
+class TFminiplusComponent : public sensor::Sensor, public Component, public uart::UARTDevice {
  public:
   // Nothing really public.
 
@@ -23,5 +23,5 @@ class A01nyubComponent : public sensor::Sensor, public Component, public uart::U
   std::vector<uint8_t> buffer_;
 };
 
-}  // namespace a01nyub
+}  // namespace tfminiplus
 }  // namespace esphome
