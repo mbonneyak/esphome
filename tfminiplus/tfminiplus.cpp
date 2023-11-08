@@ -26,12 +26,12 @@ void TfminiplusComponent::check_buffer_() {
     size_t i;
     for (i = 0; i < this->buffer_.size(); i++) {
       // Look for the first packet
-      if (this->buffer_[i] == 0xFF) {
+      if (this->buffer_[i] == 0x59) {
         if (i + 1 + 3 < this->buffer_.size()) {  // Packet is not complete
           return;                                // Wait for completion
         }
 
-        uint8_t checksum = (this->buffer_[i] + this->buffer_[i + 1] + this->buffer_[i + 2]) & 0xFF;
+        uint8_t checksum = (this->buffer_[i] + this->buffer_[i + 1] + this->buffer_[i + 2]) & 0x59;
         if (this->buffer_[i + 3] == checksum) {
           float distance = (this->buffer_[i + 1] << 8) + this->buffer_[i + 2];
           if (distance > 280) {
