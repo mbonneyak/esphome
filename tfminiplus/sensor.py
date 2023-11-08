@@ -7,16 +7,16 @@ from esphome.const import (
     DEVICE_CLASS_DISTANCE,
 )
 
-CODEOWNERS = ["@MrSuicideParrot"]
+CODEOWNERS = ["mbonneyak"]
 DEPENDENCIES = ["uart"]
 
-a01nyub_ns = cg.esphome_ns.namespace("a01nyub")
-A01nyubComponent = a01nyub_ns.class_(
-    "A01nyubComponent", sensor.Sensor, cg.Component, uart.UARTDevice
+tfminiplus_ns = cg.esphome_ns.namespace("tfminiplus")
+TfminiplusComponent = tfminiplus_ns.class_(
+    "TfminiplusComponent", sensor.Sensor, cg.Component, uart.UARTDevice
 )
 
 CONFIG_SCHEMA = sensor.sensor_schema(
-    A01nyubComponent,
+    TFminiplusComponent,
     unit_of_measurement=UNIT_METER,
     icon=ICON_ARROW_EXPAND_VERTICAL,
     accuracy_decimals=3,
@@ -25,7 +25,7 @@ CONFIG_SCHEMA = sensor.sensor_schema(
 ).extend(uart.UART_DEVICE_SCHEMA)
 
 FINAL_VALIDATE_SCHEMA = uart.final_validate_device_schema(
-    "a01nyub",
+    "tfminiplus",
     baud_rate=9600,
     require_tx=False,
     require_rx=True,
