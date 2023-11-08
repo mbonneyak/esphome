@@ -1,16 +1,17 @@
 // Datasheet https://wiki.dfrobot.com/A01NYUB%20Waterproof%20Ultrasonic%20Sensor%20SKU:%20SEN0313
+// Manual https://cdn.sparkfun.com/assets/1/4/2/1/9/TFmini_Plus_A02_Product_Manual_EN.pdf
 
-#include "a01nyub.h"
+#include "tfminiplus.h"
 #include "esphome/core/helpers.h"
 #include "esphome/core/log.h"
 
 namespace esphome {
-namespace a01nyub {
+namespace tfminiplus {
 
-static const char *const TAG = "a01nyub.sensor";
+static const char *const TAG = "tfminiplus.sensor";
 static const uint8_t MAX_DATA_LENGTH_BYTES = 4;
 
-void A01nyubComponent::loop() {
+void TfminiplusComponent::loop() {
   uint8_t data;
   while (this->available() > 0) {
     if (this->read_byte(&data)) {
@@ -20,7 +21,7 @@ void A01nyubComponent::loop() {
   }
 }
 
-void A01nyubComponent::check_buffer_() {
+void TfminiplusComponent::check_buffer_() {
   if (this->buffer_.size() >= MAX_DATA_LENGTH_BYTES) {
     size_t i;
     for (i = 0; i < this->buffer_.size(); i++) {
@@ -48,10 +49,10 @@ void A01nyubComponent::check_buffer_() {
   }
 }
 
-void A01nyubComponent::dump_config() {
-  ESP_LOGCONFIG(TAG, "A01nyub Sensor:");
+void TfminiplusComponent::dump_config() {
+  ESP_LOGCONFIG(TAG, "TFminiPlus Sensor:");
   LOG_SENSOR("  ", "Distance", this);
 }
 
-}  // namespace a01nyub
+}  // namespace tfminiplus
 }  // namespace esphome
