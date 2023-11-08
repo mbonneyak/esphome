@@ -26,7 +26,7 @@ CONFIG_SCHEMA = sensor.sensor_schema(
 
 FINAL_VALIDATE_SCHEMA = uart.final_validate_device_schema(
     "tfminiplus",
-    baud_rate=9600,
+    baud_rate=115200,
     require_tx=False,
     require_rx=True,
     data_bits=8,
