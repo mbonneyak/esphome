@@ -16,7 +16,7 @@ TfminiplusComponent = tfminiplus_ns.class_(
 )
 
 CONFIG_SCHEMA = sensor.sensor_schema(
-    TFminiplusComponent,
+    TfminiplusComponent,
     unit_of_measurement=UNIT_METER,
     icon=ICON_ARROW_EXPAND_VERTICAL,
     accuracy_decimals=3,
