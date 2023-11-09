@@ -33,11 +33,13 @@ void TfminiplusComponent::loop() {
 
 void TfminiplusComponent::check_buffer_() {
   if (this->buffer_.size() >= MAX_DATA_LENGTH_BYTES) {
+    //added line below for debug
+    ESP_LOGV(TAG, "Max Data Length Reached", distance, meters);
     size_t i;
     for (i = 0; i < this->buffer_.size(); i++) {
       // Look for the first packet
       if (this->buffer_[i] == 0x59 && this->buffer_[i+1] == 0x59) {
-        #added line below for debug
+        //added line below for debug
         ESP_LOGV(TAG, "Packet Complete", distance, meters);
         if (i + 1 + 8 < this->buffer_.size()) {  // Packet is not complete
           return;                                // Wait for completion
