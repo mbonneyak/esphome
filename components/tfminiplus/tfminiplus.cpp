@@ -1,6 +1,16 @@
 // Datasheet https://wiki.dfrobot.com/A01NYUB%20Waterproof%20Ultrasonic%20Sensor%20SKU:%20SEN0313
 // Manual https://cdn.sparkfun.com/assets/1/4/2/1/9/TFmini_Plus_A02_Product_Manual_EN.pdf
 
+// Byte0 0x59, frame header, same for each frame 
+// Byte1 0x59, frame header, same for each frame 
+// Byte2 Dist_L distance value lower by 8 bits 
+// Byte3 Dist_L distance value higher by 8 bits 
+// Byte4 Strength_L low 8 bits 
+// Byte5 Strength_L high 8 bits 
+// Byte6 Temp_L low 8 bits (suit for version later than V1.3.0) 
+// Byte7 Temp_H high 8 bits (suit for version later than V1.3.0) 
+// Byte8 Checksum is the lower 8 bits of the cumulative sum of the numbers of the first 8 bytes.
+
 #include "tfminiplus.h"
 #include "esphome/core/helpers.h"
 #include "esphome/core/log.h"
