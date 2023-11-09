@@ -37,6 +37,8 @@ void TfminiplusComponent::check_buffer_() {
     for (i = 0; i < this->buffer_.size(); i++) {
       // Look for the first packet
       if (this->buffer_[i] == 0x59 && this->buffer_[i+1] == 0x59) {
+        #added line below for debug
+        ESP_LOGV(TAG, "Packet Complete", distance, meters);
         if (i + 1 + 8 < this->buffer_.size()) {  // Packet is not complete
           return;                                // Wait for completion
         }
