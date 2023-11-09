@@ -9,7 +9,7 @@
 namespace esphome {
 namespace tfminiplus {
 
-class TFminiplusComponent : public sensor::Sensor, public Component, public uart::UARTDevice {
+class TfminiplusComponent : public sensor::Sensor, public Component, public uart::UARTDevice {
  public:
   // Nothing really public.
 
