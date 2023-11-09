@@ -19,7 +19,7 @@ namespace esphome {
 namespace tfminiplus {
 
 static const char *const TAG = "tfminiplus.sensor";
-static const uint8_t MAX_DATA_LENGTH_BYTES = 9;
+static const uint8_t MAX_DATA_LENGTH_BYTES = 8;
 
 void TfminiplusComponent::loop() {
   uint8_t data;
