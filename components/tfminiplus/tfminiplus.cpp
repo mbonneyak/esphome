@@ -16,7 +16,7 @@
 #include "esphome/core/log.h"
 
 namespace esphome {
-namespace tfminiplus {
+namespace TTfminiplus {
 
 static const char *const TAG = "tfminiplus.sensor";
 static const uint8_t MAX_DATA_LENGTH_BYTES = 8;
