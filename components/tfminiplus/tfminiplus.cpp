@@ -34,7 +34,7 @@ void TfminiplusComponent::loop() {
 void TfminiplusComponent::check_buffer_() {
   if (this->buffer_.size() >= MAX_DATA_LENGTH_BYTES) {
     //added line below for debug
-    //ESP_LOGV(TAG, "Max Data Length Reached", distance, meters);
+    ESP_LOGV("Max Data Length Reached");
     size_t i;
     for (i = 0; i < this->buffer_.size(); i++) {
       // Look for the first packet
