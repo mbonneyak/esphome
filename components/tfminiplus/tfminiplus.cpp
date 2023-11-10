@@ -53,7 +53,7 @@ void TfminiplusComponent::check_buffer_() {
           if (distance > 0) {
             float meters = distance / 1000.0;
             ESP_LOGV(TAG, "Distance from sensor: %f mm, %f m", distance, meters);
-            ESP_LOGV(TAG, "Invalid data read from sensor: %s", format_hex_pretty(this->buffer_).c_str());
+            ESP_LOGV(TAG, "Data read from sensor: %s", format_hex_pretty(this->buffer_).c_str());
             this->publish_state(meters);
           } else {
             ESP_LOGW(TAG, "Invalid data read from sensor: %s", format_hex_pretty(this->buffer_).c_str());
