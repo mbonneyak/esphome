@@ -19,7 +19,7 @@ namespace esphome {
 namespace tfminiplus {
 
 static const char *const TAG = "tfminiplus.sensor";
-static const uint8_t MAX_DATA_LENGTH_BYTES = 8;
+static const uint8_t MAX_DATA_LENGTH_BYTES = 9;
 
 void TfminiplusComponent::loop() {
   uint8_t data;
@@ -41,12 +41,12 @@ void TfminiplusComponent::check_buffer_() {
       if (this->buffer_[i] == 0x59) {
         //added line below for debug
         //ESP_LOGV(TAG, "Packet Complete", distance, meters);
-        if (i + 1 + 8 < this->buffer_.size()) {  // Packet is not complete
+        if (i + 1 + 3 < this->buffer_.size()) {  // Packet is not complete
           return;                                // Wait for completion
         }
 
-        uint8_t checksum = (this->buffer_[i] + this->buffer_[i + 1] + this->buffer_[i + 2] + this->buffer_[i + 3] + this->buffer_[i + 4] + this->buffer_[i + 5] + this->buffer_[i + 6] + this->buffer_[i + 8]) & 0x59;
-        if (this->buffer_[i + 9] == checksum) {
+        uint8_t checksum = (this->buffer_[i] + this->buffer_[i + 1] + this->buffer_[i + 2] + this->buffer_[i + 3] + this->buffer_[i + 4] + this->buffer_[i + 5] + this->buffer_[i + 6] + this->buffer_[i + 7] + this->buffer_[i + 8]) & 0x59;
+        if (this->buffer_[i + 3] == checksum) {
           float distance = (this->buffer_[i + 2] << 8) + this->buffer_[i + 3];
           //if (distance > 280) {
           if (distance > 0) {
