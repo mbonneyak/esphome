@@ -48,7 +48,7 @@ void TfminiplusComponent::check_buffer_() {
 
         uint8_t checksum = (this->buffer_[i] + this->buffer_[i + 1] + this->buffer_[i + 2] + this->buffer_[i + 3] + this->buffer_[i + 4] + this->buffer_[i + 5] + this->buffer_[i + 6] + this->buffer_[i + 7]) & 0xFF;
         if (this->buffer_[i + 8] == checksum) {
-          float distance = (this->buffer_[i + 2] << 8) + this->buffer_[i + 3];
+          float distance = (this->buffer_[i + 3] << 8) + this->buffer_[i + 2];
           //if (distance > 280) {
           if (distance > 0) {
             float meters = distance / 1000.0;
