@@ -51,7 +51,7 @@ void TfminiplusComponent::check_buffer_() {
           float distance = (this->buffer_[i + 3] << 8) + this->buffer_[i + 2];
           //if (distance > 280) {
           if (distance > 0) {
-            float meters = distance / 1000.0;
+            float meters = distance;
             ESP_LOGV(TAG, "Distance from sensor: %f mm, %f m", distance, meters);
             ESP_LOGV(TAG, "Data read from sensor: %s", format_hex_pretty(this->buffer_).c_str());
             this->publish_state(meters);
