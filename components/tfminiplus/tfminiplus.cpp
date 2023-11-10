@@ -39,15 +39,15 @@ void TfminiplusComponent::check_buffer_() {
     size_t i;
     for (i = 0; i < this->buffer_.size(); i++) {
       // Look for the first packet
-      if (this->buffer_[i] == 0x59) {
+      if (this->buffer_[i] == 0x59 && this->buffer_[i+1] == 0x59) {
         //added line below for debug
         //ESP_LOGV(TAG, "Packet Complete", distance, meters);
-        if (i + 1 + 3 < this->buffer_.size()) {  // Packet is not complete
+        if (i + 1 + 8 < this->buffer_.size()) {  // Packet is not complete
           return;                                // Wait for completion
         }
 
-        uint8_t checksum = (this->buffer_[i] + this->buffer_[i + 1] + this->buffer_[i + 2] + this->buffer_[i + 3] + this->buffer_[i + 4] + this->buffer_[i + 5] + this->buffer_[i + 6] + this->buffer_[i + 7] + this->buffer_[i + 8]) & 0x59;
-        if (this->buffer_[i + 3] == checksum) {
+        uint8_t checksum = (this->buffer_[i] + this->buffer_[i + 1] + this->buffer_[i + 2] + this->buffer_[i + 3] + this->buffer_[i + 4] + this->buffer_[i + 5] + this->buffer_[i + 6] + this->buffer_[i + 7]) & 0xFF;
+        if (this->buffer_[i + 8] == checksum) {
           float distance = (this->buffer_[i + 2] << 8) + this->buffer_[i + 3];
           //if (distance > 280) {
           if (distance > 0) {
