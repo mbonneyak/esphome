@@ -35,7 +35,7 @@ void TfminiplusComponent::check_buffer_() {
   if (this->buffer_.size() >= MAX_DATA_LENGTH_BYTES) {
     //added line below for debug
     //ESP_LOGV(TAG, "Max Data Length Reached", 1, 2);
-    ESP_LOGW(TAG, "Buffer Check: %s", format_hex_pretty(this->buffer_).c_str());
+    //ESP_LOGW(TAG, "Buffer Check: %s", format_hex_pretty(this->buffer_).c_str());
     size_t i;
     for (i = 0; i < this->buffer_.size(); i++) {
       // Look for the first packet
