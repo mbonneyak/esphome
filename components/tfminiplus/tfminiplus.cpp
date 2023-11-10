@@ -27,6 +27,7 @@ void TfminiplusComponent::loop() {
     if (this->read_byte(&data)) {
       buffer_.push_back(data);
       this->check_buffer_();
+       ESP_LOGV(TAG, "Getting data", 1, 2);
     }
   }
 }
